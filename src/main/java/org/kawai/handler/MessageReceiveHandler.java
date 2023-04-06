@@ -2,35 +2,41 @@ package org.kawai.handler;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.kawai.config.CommendConfig;
-import org.kawai.config.Commendable;
+import org.kawai.commend.CommendHolder;
+import org.kawai.commend.CommendType;
 import org.kawai.utils.BotEventUtils;
 
-public class MessageReceiveHandler extends ListenerAdapter {
+import java.util.Arrays;
 
-    CommendConfig commendConfig = new CommendConfig();
+public class MessageReceiveHandler extends ListenerAdapter {
+    private final CommendHolder holder = CommendHolder.getInstance();
+
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        String message = event.getMessage().getContentRaw();
-
-        char signature = message.charAt(0);
-        String newMessage = message.substring(1);
-
         if (BotEventUtils.isBot(event)) {
             return;
         }
 
+        String message = event.getMessage().getContentRaw();
 
-        if (signature == '%') {
-            event.getChannel().sendMessage("안녕 선생" + newMessage).queue();
+
+        if (!message.startsWith("!")) {
+            CommendType reaction = CommendType.from(message);
+            holder.getCommendableMap().get(reaction).doCommend(event.getChannel(), message);
+            return;
         }
 
-        String[] splited = event.getMessage().getContentRaw().split(" ");
-        Commendable commend = commendConfig.getCommend(splited[0]);
+        String userMessage = message.substring(1);
 
-        commend.doCommend(event.getChannel(), BotEventUtils.ExtreactRawMessage(event));
+        String[] splitedUserMessage = userMessage.split(" ");
+
+        String commend = splitedUserMessage[0];
+        CommendType commendType = CommendType.from(commend);
 
 
+        String[] strings = Arrays.copyOfRange(splitedUserMessage, 1, splitedUserMessage.length);
+        holder.getCommendableMap()
+                .get(commendType).doCommend(event.getChannel(), String.join(" ", strings));
     }
 }
