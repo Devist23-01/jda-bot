@@ -2,14 +2,14 @@ package org.kawai.handler;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.kawai.commend.CommendHolder;
-import org.kawai.commend.CommendType;
+import org.kawai.command.CommandHolder;
+import org.kawai.command.CommandType;
 import org.kawai.utils.BotEventUtils;
 
 import java.util.Arrays;
 
 public class MessageReceiveHandler extends ListenerAdapter {
-    private final CommendHolder holder = CommendHolder.getInstance();
+    private final CommandHolder holder = CommandHolder.getInstance();
 
 
     @Override
@@ -22,8 +22,8 @@ public class MessageReceiveHandler extends ListenerAdapter {
 
 
         if (!message.startsWith("!")) {
-            CommendType reaction = CommendType.from(message);
-            holder.getCommendableMap().get(reaction).doCommend(event.getChannel(), message);
+            CommandType reaction = CommandType.from(message);
+            holder.getCommandableMap().get(reaction).doCommand(event.getChannel(), message);
             return;
         }
 
@@ -31,12 +31,12 @@ public class MessageReceiveHandler extends ListenerAdapter {
 
         String[] splitedUserMessage = userMessage.split(" ");
 
-        String commend = splitedUserMessage[0];
-        CommendType commendType = CommendType.from(commend);
+        String Command = splitedUserMessage[0];
+        CommandType CommandType = CommandType.from(Command);
 
 
         String[] strings = Arrays.copyOfRange(splitedUserMessage, 1, splitedUserMessage.length);
-        holder.getCommendableMap()
-                .get(commendType).doCommend(event.getChannel(), String.join(" ", strings));
+        holder.getCommandableMap()
+                .get(CommandType).doCommand(event.getChannel(), String.join(" ", strings));
     }
 }

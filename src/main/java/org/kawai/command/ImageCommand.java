@@ -1,8 +1,8 @@
-package org.kawai.commend;
+package org.kawai.command;
 
 import net.dv8tion.jda.api.entities.MessageChannel;
 import org.kawai.Game;
-import org.kawai.config.Commendable;
+import org.kawai.config.Commandable;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -10,9 +10,9 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class ImageCommend implements Commendable {
+public class ImageCommand implements Commandable {
     @Override
-    public void doCommend(MessageChannel channel, String userMessage) {
+    public void doCommand(MessageChannel channel, String userMessage) {
         // 컨트롤 + 알트 + v
         URL resource = Game.class.getClassLoader().getResource("cocomi.png");
         byte[] bytes = new byte[0];
@@ -29,7 +29,7 @@ public class ImageCommend implements Commendable {
     }
 
     @Override
-    public CommendType getCommendType() {
-        return CommendType.IMAGE;
+    public CommandType getCommandType() {
+        return CommandType.IMAGE;
     }
 }
