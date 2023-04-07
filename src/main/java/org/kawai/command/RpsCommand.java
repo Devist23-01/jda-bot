@@ -1,11 +1,11 @@
-package org.kawai.commend;
+package org.kawai.command;
 
 import net.dv8tion.jda.api.entities.MessageChannel;
-import org.kawai.config.Commendable;
+import org.kawai.config.Commandable;
 
-public class RpsCommend implements Commendable {
+public class RpsCommand implements Commandable {
     @Override
-    public void doCommend(MessageChannel channel, String message) {
+    public void doCommand(MessageChannel channel, String message) {
 
 
         int percentage = (int) (Math.random() * 3);
@@ -50,7 +50,7 @@ public class RpsCommend implements Commendable {
     }
 
     @Override
-    public CommendType getCommendType() {
-        return CommendType.RPS;
+    public CommandType getCommandType() {
+        return CommandType.RPS;
     }
 }

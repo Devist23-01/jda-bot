@@ -1,19 +1,19 @@
-package org.kawai.commend;
+package org.kawai.command;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
-import org.kawai.config.Commendable;
+import org.kawai.config.Commandable;
 
 import java.awt.*;
 import java.time.LocalDateTime;
 
 import static org.kawai.utils.BotEventUtils.sendMessage;
 
-public class ReactionCommend implements Commendable {
+public class ReactionCommand implements Commandable {
 
     @Override
-    public void doCommend(MessageChannel channel, String userMessage) {
+    public void doCommand(MessageChannel channel, String userMessage) {
         if (userMessage.equals("센세")) {
             EmbedBuilder builder = new EmbedBuilder();
 
@@ -39,8 +39,8 @@ public class ReactionCommend implements Commendable {
     }
 
     @Override
-    public CommendType getCommendType() {
-        return CommendType.REACTION;
+    public CommandType getCommandType() {
+        return CommandType.REACTION;
     }
 
 }
