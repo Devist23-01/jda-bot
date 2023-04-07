@@ -1,11 +1,12 @@
 package org.kawai.command;
 
 import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.User;
 import org.kawai.config.Commandable;
 
 public class RpsCommand implements Commandable {
     @Override
-    public void doCommand(MessageChannel channel, String message) {
+    public void doCommand(MessageChannel channel, User user, String message) {
 
 
         int percentage = (int) (Math.random() * 3);

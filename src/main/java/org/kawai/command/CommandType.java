@@ -7,7 +7,8 @@ import java.util.Set;
 public enum CommandType {
     REACTION(""),
     RPS("도박", "ㄷㅂ", "ㄷ", "rps"),
-    IMAGE("코코미", "행크TS", "이로TS");
+    IMAGE("코코미", "행크TS", "이로TS"),
+    STORY("나랑놀자");
     // 이 상수들은 CommandSet Array
 
     //    set == collection

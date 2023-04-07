@@ -1,10 +1,7 @@
 package org.kawai.config;
 
 import org.jetbrains.annotations.NotNull;
-import org.kawai.command.CommandHolder;
-import org.kawai.command.ImageCommand;
-import org.kawai.command.ReactionCommand;
-import org.kawai.command.RpsCommand;
+import org.kawai.command.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +23,8 @@ public class CommandConfig {
         return Arrays.asList(
                 new RpsCommand(),
                 new ReactionCommand(),
-                new ImageCommand()
+                new ImageCommand(),
+                new StoryCommand()
         );
     }
 
