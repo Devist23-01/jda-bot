@@ -8,10 +8,6 @@ public class BotEventUtils {
         return event.getAuthor().isBot();
     }
 
-    public static String ExtreactRawMessage(MessageReceivedEvent event) {
-        return event.getMessage().getContentRaw();
-    }
-
     public static void sendMessage(MessageChannel channel, String message) {
         channel.sendMessage(message).queue();
     }
