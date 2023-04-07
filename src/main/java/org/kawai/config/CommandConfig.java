@@ -13,11 +13,11 @@ public class CommandConfig {
 
     public CommandConfig() {
         CommandHolder holder = CommandHolder.getInstance();
-        List<Commandable> Commandables = getCommandables();
+        List<Commandable> commandables = getCommandables();
 
-        for (Commandable Commandable : Commandables) {
+        for (Commandable commandable : commandables) {
             holder.getCommandableMap()
-                    .put(Commandable.getCommandType(), Commandable);
+                    .put(commandable.getCommandType(), commandable);
         }
     }
 

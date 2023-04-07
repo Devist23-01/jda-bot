@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class CommandHolder {
     private static CommandHolder INSTANCE = null;
-    private Map<CommandType, Commandable> CommandableMap = new HashMap<>();
+    private Map<CommandType, Commandable> commandableMap = new HashMap<>();
 
     private CommandHolder() {
     }
@@ -20,7 +20,7 @@ public class CommandHolder {
     }
 
     public Map<CommandType, Commandable> getCommandableMap() {
-        return CommandableMap;
+        return commandableMap;
     }
 
 }

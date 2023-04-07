@@ -11,18 +11,18 @@ public enum CommandType {
     // 이 상수들은 CommandSet Array
 
     //    set == collection
-    private final Set<String> CommandSet = new HashSet<>();
+    private final Set<String> commandSet = new HashSet<>();
 
     //    enum은 Runtime에서 실행함
-    CommandType(String... CommandSet) {
-        this.CommandSet.addAll(Arrays.asList(CommandSet));
+    CommandType(String... commandSet) {
+        this.commandSet.addAll(Arrays.asList(commandSet));
     }
 
     public static CommandType from(String command) {
         CommandType[] values = CommandType.values();
         for (CommandType value : values) {
-            Set<String> CommandSet = value.getCommandSet();
-            for (String realCommand : CommandSet) {
+            Set<String> commandSet = value.getCommandSet();
+            for (String realCommand : commandSet) {
                 if (realCommand.equals(command)) {
                     return value;
                 }
@@ -32,6 +32,6 @@ public enum CommandType {
     }
 
     public Set<String> getCommandSet() {
-        return CommandSet;
+        return commandSet;
     }
 }

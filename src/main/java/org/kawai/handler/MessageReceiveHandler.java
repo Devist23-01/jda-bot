@@ -31,12 +31,12 @@ public class MessageReceiveHandler extends ListenerAdapter {
 
         String[] splitedUserMessage = userMessage.split(" ");
 
-        String Command = splitedUserMessage[0];
-        CommandType CommandType = CommandType.from(Command);
+        String command = splitedUserMessage[0];
+        CommandType commandType = CommandType.from(command);
 
 
         String[] strings = Arrays.copyOfRange(splitedUserMessage, 1, splitedUserMessage.length);
         holder.getCommandableMap()
-                .get(CommandType).doCommand(event.getChannel(), String.join(" ", strings));
+                .get(commandType).doCommand(event.getChannel(), String.join(" ", strings));
     }
 }
